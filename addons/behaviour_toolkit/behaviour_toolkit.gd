@@ -3,6 +3,13 @@ class_name BehaviourToolkit extends Node
 ## Base class for Behaviour Toolkit plugin nodes.
 
 
+enum LogType {
+    DEFAULT,
+    WARNING,
+    ERROR,
+}
+
+
 class Logger:
     extends BehaviourToolkit
     ## Logger class for Behaviour Toolkit plugin.
@@ -10,12 +17,26 @@ class Logger:
     ## Main color for logger messages.
     const COLOR_MAIN: String = "Orange"
     ## Accent color for logger messages.
-    const COLOR_ACCENT: String = "Yellow"
+    const COLOR_ACCENT: String = "Blue"
+    ## Warning color for logger messages.
+    const COLOR_WARNING: String = "Yellow"
+    ## Error color for logger messages.
+    const COLOR_ERROR: String = "Red"
 
     ## Log a message to the console with the Behaviour Toolkit prefix.
-    static func say(message: String, caller: Node = null) -> void:
+    static func say(message: String, caller: Node = null, type: LogType = LogType.DEFAULT) -> void:
         var log_message: String
         log_message = colorize("[Behaviour Toolkit] ", COLOR_MAIN)
+
+        if not type == LogType.DEFAULT:
+            var color: String
+            match type:
+                LogType.WARNING:
+                    color = COLOR_WARNING
+                LogType.ERROR:
+                    color = COLOR_ERROR
+            
+            log_message += colorize("[" + LogType.keys()[type] + "] ", color)
 
         if caller != null:
 
