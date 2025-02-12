@@ -66,6 +66,14 @@ func get_newest_version() -> void:
 
 ## Called when the request to the repository is completed, parses the config file and sets the newest version.
 func _on_http_request_request_completed(result:int, response_code:int, headers:PackedStringArray, body:PackedByteArray):
+	if result != OK:
+		BehaviourToolkit.Logger.say(
+			"Unable to fetch newest version from GitHub. Check your internet connection!",
+			null,
+			BehaviourToolkit.LogType.WARNING
+		)
+		return
+
 	var config = ConfigFile.new()
 	var err = config.parse(body.get_string_from_ascii())
 
