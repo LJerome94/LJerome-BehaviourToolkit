@@ -16,6 +16,8 @@ signal update_available
 ## The URL to the repository config file. This file has to be the raw version!
 @export var repo_config_url = ""
 
+## Error flag to prevent the error message from printing twice.
+static var had_error: bool = false
 
 ## The current version of the plugin.
 var current_version: String
@@ -24,6 +26,8 @@ var newest_version: String
 
 
 func _ready():
+	current_version = get_current_version()
+
 	# Connect signals
 	connect("request_completed", _on_http_request_request_completed)
 
@@ -36,7 +40,6 @@ func _ready():
 
 func start():
 	# Get versions
-	current_version = get_current_version()
 	get_newest_version()
 
 
@@ -66,6 +69,18 @@ func get_newest_version() -> void:
 
 ## Called when the request to the repository is completed, parses the config file and sets the newest version.
 func _on_http_request_request_completed(result:int, response_code:int, headers:PackedStringArray, body:PackedByteArray):
+	if result != OK:
+		if not had_error:
+			BehaviourToolkit.Logger.say(
+				"Unable to fetch newest version from GitHub. Check your internet connection and reload the editor!",
+				null,
+				BehaviourToolkit.LogType.WARNING
+			)
+			had_error = true
+		
+		emit_signal("update_request_completed")
+		return
+
 	var config = ConfigFile.new()
 	var err = config.parse(body.get_string_from_ascii())
 
