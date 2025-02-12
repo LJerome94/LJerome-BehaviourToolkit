@@ -24,6 +24,8 @@ var newest_version: String
 
 
 func _ready():
+	current_version = get_current_version()
+
 	# Connect signals
 	connect("request_completed", _on_http_request_request_completed)
 
@@ -36,7 +38,6 @@ func _ready():
 
 func start():
 	# Get versions
-	current_version = get_current_version()
 	get_newest_version()
 
 
@@ -72,6 +73,7 @@ func _on_http_request_request_completed(result:int, response_code:int, headers:P
 			null,
 			BehaviourToolkit.LogType.WARNING
 		)
+		emit_signal("update_request_completed")
 		return
 
 	var config = ConfigFile.new()
