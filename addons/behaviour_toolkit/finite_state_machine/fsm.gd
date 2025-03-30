@@ -36,7 +36,7 @@ signal state_changed(state: FSMState)
 		_setup_processing()
 
 ## Whether the FSM is active or not.
-@export var active: bool = true
+var active: bool = true
 ## The initial state of the FSM.
 @export var initial_state: FSMState:
 	set(value):
@@ -73,7 +73,7 @@ func _ready() -> void:
 		blackboard = _create_local_blackboard()
 
 	if autostart:
-		start()
+		start.call_deferred()
 	else:
 		active = false
 
@@ -141,7 +141,7 @@ func _process_code(delta: float) -> void:
 			transition._on_transition(delta, actor, blackboard)
 			
 			# Change the current state
-			change_state(transition.get_next_state())
+			change_state(transition.next_state)
 
 			break
 	

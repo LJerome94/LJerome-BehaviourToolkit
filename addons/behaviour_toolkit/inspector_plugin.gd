@@ -1,7 +1,7 @@
 extends EditorInspectorPlugin
 
 
-func _can_handle(object):
+func _can_handle(object) -> bool:
 	return true
 
 
