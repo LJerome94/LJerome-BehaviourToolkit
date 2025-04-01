@@ -48,11 +48,6 @@ func is_valid_event(current_event: String) -> bool:
 	return current_event == event
 
 
-## Returns which state to transition to, when valid.
-func get_next_state() -> FSMState:
-	return next_state
-
-
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
