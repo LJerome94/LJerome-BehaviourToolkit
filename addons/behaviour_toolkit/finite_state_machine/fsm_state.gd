@@ -40,6 +40,14 @@ func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
+## Checks for valid transitions.
+func _has_valid_transitions(_actor: Node, _blackboard: Blackboard, _event: StringName) -> FSMTransition:
+	for transition in transitions:
+		if transition.is_valid(_actor, _blackboard) or transition.is_valid_event(_event):
+			return transition
+	return null
+	
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 

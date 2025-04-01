@@ -125,7 +125,7 @@ func _process_code(delta: float) -> void:
 		return
 
 	# The current event
-	var event: String = ""
+	var event: StringName = ""
 
 	# Check if there are events
 	if current_events.size() > 0:
@@ -135,15 +135,17 @@ func _process_code(delta: float) -> void:
 		current_events.remove_at(0)
 
 	# Check if the current state is valid
-	for transition in active_state.transitions:
-		if transition.is_valid(actor, blackboard) or transition.is_valid_event(event):
-			# Process the transition
-			transition._on_transition(delta, actor, blackboard)
-			
-			# Change the current state
-			change_state(transition.next_state)
+	var transition = active_state._has_valid_transitions(actor, blackboard, event)
+	
+	if transition is FSMTransition:
+		# Process the transition
+		transition._on_transition(delta, actor, blackboard)
+		
+		# Change the current state
+		change_state(transition.next_state)
 
-			break
+	if active_state is FSMCompoundState:
+		active_state._process_code(delta, actor, blackboard)
 	
 	# Process the current state
 	active_state._on_update(delta, actor, blackboard)
@@ -169,6 +171,9 @@ func change_state(state: FSMState) -> void:
 ## Fires an event in the FSM.
 func fire_event(event: String) -> void:
 	current_events.append(event)
+	
+	if active_state is FSMCompoundState:
+		active_state.fire_event(event)
 
 	if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
 

@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://ritlfwnk4iq3"]
+
+[ext_resource type="Script" uid="uid://b0bqn8gtyevqu" path="res://addons/behaviour_toolkit/finite_state_machine/fsm.gd" id="1_o1rk4"]
+[ext_resource type="Script" uid="uid://5n8qfp75073o" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_compound_state.gd" id="2_ckewi"]
+[ext_resource type="Script" uid="uid://1h0braq41vwb" path="res://addons/behaviour_toolkit/finite_state_machine/fsm_transition.gd" id="3_o1rk4"]
+
+[sub_resource type="Gradient" id="Gradient_1wfw0"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_shb12"]
+gradient = SubResource("Gradient_1wfw0")
+
+[sub_resource type="GDScript" id="GDScript_o1rk4"]
+script/source = "extends FSMState
+
+
+func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
+	$\"../../../Sprite2D\".modulate = Color.RED
+"
+
+[sub_resource type="GDScript" id="GDScript_ckewi"]
+script/source = "extends FSMTransition
+
+## Evaluates true, if the transition conditions are met.
+func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		return true
+	return false
+"
+
+[sub_resource type="GDScript" id="GDScript_ukcvv"]
+script/source = "extends FSMState
+
+
+func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
+	$\"../../../Sprite2D\".modulate = Color.GREEN
+
+func _on_update(delta, actor, blackboard):
+	if Input.is_action_just_pressed(\"ui_left\"):
+		$\"../..\".fire_event(\"turn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_1jefk"]
+script/source = "extends FSMState
+
+
+func _on_update(delta, actor, blackboard):
+	$\"../../Sprite2D\".rotation += delta
+"
+
+[node name="FsmTest" type="Node2D"]
+position = Vector2(390, 158)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_shb12")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+script = ExtResource("1_o1rk4")
+autostart = true
+initial_state = NodePath("CompoundState Color")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
+
+[node name="CompoundState Color" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_ckewi")
+initial_state = NodePath("Red")
+metadata/_custom_type_script = "uid://5n8qfp75073o"
+
+[node name="Red" type="Node" parent="FiniteStateMachine/CompoundState Color"]
+script = SubResource("GDScript_o1rk4")
+
+[node name="Red to Green" type="Node" parent="FiniteStateMachine/CompoundState Color/Red" node_paths=PackedStringArray("next_state")]
+script = SubResource("GDScript_ckewi")
+next_state = NodePath("../../Green")
+
+[node name="Green" type="Node" parent="FiniteStateMachine/CompoundState Color"]
+script = SubResource("GDScript_ukcvv")
+
+[node name="Green to Red" type="Node" parent="FiniteStateMachine/CompoundState Color/Green" node_paths=PackedStringArray("next_state")]
+script = SubResource("GDScript_ckewi")
+next_state = NodePath("../../Red")
+
+[node name="To Turning" type="Node" parent="FiniteStateMachine/CompoundState Color" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_o1rk4")
+next_state = NodePath("../../Turning")
+use_event = true
+event = "turn"
+
+[node name="Turning" type="Node" parent="FiniteStateMachine"]
+script = SubResource("GDScript_1jefk")

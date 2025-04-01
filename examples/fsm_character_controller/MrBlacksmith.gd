@@ -7,7 +7,7 @@ const SPRINT_MULTIPLIER := 1.7
 
 var movement_direction := Vector2.ZERO
 
-
+@onready var state_machine := $FSMController
 @onready var sprite := $Sprite2D
 @onready var animation_player := $AnimationPlayer
 @onready var particles_walking := $ParticlesWalking
