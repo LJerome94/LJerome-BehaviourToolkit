@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://o16emp4t4wb1"]
+[gd_scene load_steps=40 format=3 uid="uid://o16emp4t4wb1"]
 
 [ext_resource type="Script" uid="uid://cj617ykhf0je8" path="res://addons/behaviour_toolkit/ui/toolkit_ui.gd" id="1_51rvx"]
 [ext_resource type="Texture2D" uid="uid://boof0yioplbqr" path="res://addons/behaviour_toolkit/icons/FSMState.svg" id="1_hqqj5"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dbvuyvumeayw7" path="res://addons/behaviour_toolkit/icons/BTCompositeSelector.svg" id="6_mdg6v"]
 [ext_resource type="Texture2D" uid="uid://cik3abcqm7kr1" path="res://addons/behaviour_toolkit/icons/BTDecorator.svg" id="6_pyx3s"]
 [ext_resource type="Texture2D" uid="uid://y6kqrnrojvj2" path="res://addons/behaviour_toolkit/icons/BTDecoratorFail.svg" id="7_1hgfw"]
+[ext_resource type="Texture2D" uid="uid://ca2tws61els2p" path="res://addons/behaviour_toolkit/icons/FSMCompoundState.svg" id="7_bjcq7"]
 [ext_resource type="Texture2D" uid="uid://dkt0bqwfmkmpq" path="res://addons/behaviour_toolkit/icons/BTDecoratorSucceed.svg" id="8_augsf"]
 [ext_resource type="Texture2D" uid="uid://bevi04faxe066" path="res://addons/behaviour_toolkit/icons/BTCompositeRandom.svg" id="8_lf7t0"]
 [ext_resource type="Texture2D" uid="uid://bmo340f2o6tai" path="res://addons/behaviour_toolkit/icons/BTDecoratorNot.svg" id="9_0k0nv"]
@@ -163,6 +164,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "New State"
 icon = ExtResource("1_hqqj5")
+
+[node name="ButtonCompoundState" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Compound State"
+icon = ExtResource("7_bjcq7")
 
 [node name="ButtonTransition" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer/Toolbox/FiniteStateMachine"]
 unique_name_in_owner = true

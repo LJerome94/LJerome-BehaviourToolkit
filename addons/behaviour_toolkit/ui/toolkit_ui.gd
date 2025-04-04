@@ -37,6 +37,7 @@ func _ready():
 	# Connect buttons
 	%ButtonAddFSM.connect("pressed", _on_button_pressed.bind(FiniteStateMachine, "FiniteStateMachine"))
 	%ButtonState.connect("pressed", _on_button_pressed.bind(FSMState, "FSMState"))
+	%ButtonCompoundState.connect("pressed", _on_button_pressed.bind(FSMCompoundState, "FSMCompoundState"))
 	%ButtonTransition.connect("pressed", _on_button_pressed.bind(FSMTransition, "FSMTransition"))
 	%ButtonStateIntegratedBT.connect("pressed", _on_button_pressed.bind(FSMStateIntegratedBT, "FSMStateIntegratedBT"))
 	%ButtonStateIntegrationReturn.connect("pressed", _on_button_pressed.bind(FSMStateIntegrationReturn, "FSMStateIntegrationReturn"))
@@ -93,7 +94,7 @@ func _on_button_pressed(type, name: String):
 		placement_mode = PlacementMode.CHILD
 
 
-	var new_node: BehaviourToolkit = type.new()
+	var new_node = type.new()
 
 	var current_selection_index = current_selection.get_index()
 
