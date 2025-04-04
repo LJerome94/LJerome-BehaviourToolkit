@@ -57,9 +57,11 @@ texture = SubResource("GradientTexture2D_shb12")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("1_o1rk4")
-autostart = true
 initial_state = NodePath("CompoundState Color")
+autostart = true
 actor = NodePath("..")
+process_type = null
+verbose = null
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 
 [node name="CompoundState Color" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("initial_state")]
@@ -86,6 +88,9 @@ script = ExtResource("3_o1rk4")
 next_state = NodePath("../../Turning")
 use_event = true
 event = "turn"
+autostart = null
+process_type = null
+verbose = null
 
 [node name="Turning" type="Node" parent="FiniteStateMachine"]
 script = SubResource("GDScript_1jefk")

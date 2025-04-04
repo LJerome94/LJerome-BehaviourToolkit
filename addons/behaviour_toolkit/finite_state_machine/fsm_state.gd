@@ -1,6 +1,6 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/FSMState.svg")
-class_name FSMState extends BehaviourToolkit
+class_name FSMState extends Node
 ## A state in a [FiniteStateMachine]. This is the base class for all states.
 ##
 ## It's a basic building block to build full State Machines, only one state

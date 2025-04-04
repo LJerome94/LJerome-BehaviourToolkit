@@ -1,4 +1,5 @@
 @tool
+@icon("res://addons/behaviour_toolkit/icons/FSMCompoundState.svg")
 class_name FSMCompoundState extends FSMState
 
 
@@ -33,6 +34,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 	active_state._on_enter(_actor, _blackboard)
 
 	# Emit the state changed signal
+	emit_signal("state_changed", active_state)
 
 
 func _process_code(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
@@ -73,7 +75,7 @@ func change_state(state: FSMState, _actor: Node, _blackboard: Blackboard) -> voi
 	#if verbose: BehaviourToolkit.Logger.say("Changed state to " + active_state.get_name(), self)
 
 	# Emit the state changed signal
-	#emit_signal("state_changed", active_state)
+	emit_signal("state_changed", active_state)
 
 
 ## Fires an event in the compound state.
@@ -98,7 +100,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("No states found.")
 
 	for child in children:
-		if not child is FSMState:
-			warnings.append("Node '" + child.get_name() + "' is not a FSMState.")
+		if child is not FSMState and child is not FSMTransition:
+			warnings.append("Node '" + child.get_name() + "' is not a FSMState or FSMTransition.")
 
 	return warnings
