@@ -111,8 +111,8 @@ func _process_code(delta: float) -> void:
 		# Change the current state
 		change_state(transition.next_state)
 
-	if active_state is FSMCompoundState:
-		active_state._process_code(delta, actor, blackboard)
+	#if active_state is FSMCompoundState:
+		#active_state._process_code(delta, actor, blackboard)
 
 	# Process the current state
 	active_state._on_update(delta, actor, blackboard)

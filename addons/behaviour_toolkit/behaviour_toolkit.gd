@@ -1,5 +1,6 @@
 @icon("res://addons/behaviour_toolkit/icons/Gear.svg")
-class_name BehaviourToolkit extends Node
+extends Node
+class_name BehaviourToolkit
 ## Base class for Behaviour Toolkit plugin nodes.
 
 

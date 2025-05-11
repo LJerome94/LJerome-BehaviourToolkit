@@ -243,7 +243,6 @@ wait_for_ticks = 500
 [node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector"]
 script = ExtResource("18_45wr7")
 event = &"failed_revive"
-process_type = 0
 
 [node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_ahoqg")

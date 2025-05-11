@@ -6,4 +6,3 @@ func tick(_delta: float, actor: Node, _blackboard: Blackboard) -> BTStatus:
 		return BTStatus.SUCCESS
 	
 	return BTStatus.FAILURE
-

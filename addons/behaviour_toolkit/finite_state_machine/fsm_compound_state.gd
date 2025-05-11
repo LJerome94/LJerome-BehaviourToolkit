@@ -23,7 +23,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 	# Get all the states
 	for state in get_children():
 		if state is FSMState:
-			states.append(state)
+			states.append(state) # DANGER Ceci est dangereux pour des doubles calls
 
 	#if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
 
@@ -37,7 +37,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 	emit_signal("state_changed", active_state)
 
 
-func _process_code(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 	# The current event
 	var event: StringName = ""
 
