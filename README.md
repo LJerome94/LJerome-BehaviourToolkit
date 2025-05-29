@@ -7,9 +7,9 @@ This project is a fork of [ThePat02/BehaviourToolkit](https://github.com/ThePat0
 
 ### Features
 - ![GEAR ICON](addons/behaviour_toolkit/icons/Gear.svg) Behaviour Architectures
-    - ![FMS ICON](addons/behaviour_toolkit/icons/FiniteStateMachine.svg) Finite State Machine
-    - ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) Behaviour Tree with generic utility 
-    - ![Integration Icon](addons/behaviour_toolkit/icons/BTCompositeIntegration.svg) Nest Behaviour Trees inside State Machines and vice versa!
+	- ![FMS ICON](addons/behaviour_toolkit/icons/FiniteStateMachine.svg) Finite State Machine
+	- ![BT ICON](addons/behaviour_toolkit/icons/BTRoot.svg) Behaviour Tree with generic utility 
+	- ![Integration Icon](addons/behaviour_toolkit/icons/BTCompositeIntegration.svg) Nest Behaviour Trees inside State Machines and vice versa!
 - ![BLACKBOARD ICON](addons/behaviour_toolkit/icons/Blackboard.svg) Blackboard Resource
 - Editor Interface with shortcuts
 - [Templates](docs/documentation.md#using-script-templates) for easy extension and integration

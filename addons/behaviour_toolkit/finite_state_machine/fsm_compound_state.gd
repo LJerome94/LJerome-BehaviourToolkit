@@ -10,6 +10,8 @@ var active_state: FSMState
 ## The list of current events.
 var current_events: Array[String]
 
+## The signal emitted when the state changes.
+signal state_changed(state: FSMState)
 
 ## The initial state of the Compound State.
 @export var initial_state: FSMState:

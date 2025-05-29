@@ -12,7 +12,7 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 	for state in get_children():
 		if state is FSMState:
 			states.append(state)# DANGER Ceci est dangereux pour des doubles calls
-
+			state._on_enter(_actor, _blackboard)
 	#if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
 
 
