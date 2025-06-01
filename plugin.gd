@@ -39,7 +39,6 @@ func _enter_tree():
 	BehaviourToolkit.Logger.say("Plugin enabled.")
 
 
-
 func _exit_tree():
 	remove_control_from_container(EditorPlugin.CONTAINER_CANVAS_EDITOR_SIDE_LEFT,_ui_canvas)
 	remove_control_from_container(EditorPlugin.CONTAINER_SPATIAL_EDITOR_SIDE_LEFT, _ui_spatial)
