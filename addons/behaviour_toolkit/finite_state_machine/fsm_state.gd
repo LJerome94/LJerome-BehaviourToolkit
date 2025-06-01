@@ -1,6 +1,7 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/FSMState.svg")
-class_name FSMState extends BehaviourToolkit
+extends Node
+class_name FSMState
 ## A state in a [FiniteStateMachine]. This is the base class for all states.
 ##
 ## It's a basic building block to build full State Machines, only one state
@@ -26,17 +27,17 @@ func _ready() -> void:
 
 
 ## Executes after the state is entered.
-func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
 ## Executes every process call, if the state is active.
-func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, _fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 
 ## Executes before the state is exited.
-func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_exit(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	pass
 
 

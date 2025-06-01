@@ -1,5 +1,6 @@
 @icon("res://addons/behaviour_toolkit/icons/BTBehaviour.svg")
-class_name BTBehaviour extends BehaviourToolkit
+extends Node
+class_name BTBehaviour
 ## Base class for building behaviour nodes in BehaviourToolkit.
 ##
 ## Behaviours can return [enum BTBehaviour.BTStatus.SUCCESS],

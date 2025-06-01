@@ -9,29 +9,6 @@ class_name BTRoot extends BehaviourToolkit
 ## The root node is responsible for updating the tree.
 
 
-enum ProcessType {
-	IDLE, ## Updates on every rendered frame (at current FPS).
-	PHYSICS, ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
-}
-
-
-@export var autostart: bool = false
-
-## Can be used to select if Behaviour Tree tick() is calculated on
-## rendering (IDLE) frame or physics (PHYSICS) frame. 
-## [br]
-## More info: [method Node._process] and [method Node._physics_process]
-@export var process_type: ProcessType = ProcessType.PHYSICS:
-	set(value):
-		process_type = value
-		_setup_processing()
-
-@export var actor: Node
-@export var blackboard: Blackboard
-@export var verbose: bool = false
-
-
-var active: bool = false
 var current_status: BTBehaviour.BTStatus
 var entry_point: Node = null
 
@@ -63,14 +40,6 @@ func _ready() -> void:
 	_setup_processing()
 
 
-func  _physics_process(delta: float) -> void:
-	_process_code(delta)
-
-
-func _process(delta: float) -> void:
-	_process_code(delta)
-
-
 func _process_code(delta: float) -> void:
 	if not active:
 		return
@@ -86,14 +55,6 @@ func _create_local_blackboard() -> Blackboard:
 	if verbose: BehaviourToolkit.Logger.say("Creating new blackboard", self)
 	var blackboard: Blackboard = Blackboard.new()
 	return blackboard
-
-
-# Configures process type to use, if BTree is not active both are disabled.
-func _setup_processing() -> void:
-	if verbose:
-		BehaviourToolkit.Logger.say("Setting process type: " + str(ProcessType.keys()[process_type]), self)
-	set_physics_process(process_type == ProcessType.PHYSICS)
-	set_process(process_type == ProcessType.IDLE)
 
 
 func _get_configuration_warnings() -> PackedStringArray:

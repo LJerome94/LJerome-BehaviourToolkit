@@ -10,12 +10,6 @@ class_name FiniteStateMachine extends BehaviourToolkit
 ## _on_exit[/code] methods when extending the node's script.
 
 
-enum ProcessType {
-	IDLE, ## Updates on every rendered frame (at current FPS).
-	PHYSICS, ## Updates on a fixed rate (60 FPS by default) synchornized with physics thread. 
-}
-
-
 const ERROR_INITIAL_STATE_NULL: String = "The initial cannot be null when starting the State Machine."
 
 
@@ -23,31 +17,11 @@ const ERROR_INITIAL_STATE_NULL: String = "The initial cannot be null when starti
 signal state_changed(state: FSMState)
 
 
-## Whether the FSM should start automatically.
-@export var autostart: bool = false
-
-## Can be used to select if FSM _on_update() is calculated on
-## rendering (IDLE) frame or physics (PHYSICS) frame.
-## [br]
-## More info: [method Node._process] and [method Node._physics_process]
-@export var process_type: ProcessType = ProcessType.PHYSICS:
-	set(value):
-		process_type = value
-		_setup_processing()
-
-## Whether the FSM is active or not.
-var active: bool = true
 ## The initial state of the FSM.
 @export var initial_state: FSMState:
 	set(value):
 		initial_state = value
 		update_configuration_warnings()
-## The actor of the FSM.
-@export var actor: Node
-## The blackboard of the FSM.
-@export var blackboard: Blackboard
-## Whether the FSM should print debug messages.
-@export var verbose: bool = false
 
 
 ## The list of states in the FSM.
@@ -70,7 +44,8 @@ func _ready() -> void:
 	connect("state_changed", _on_state_changed)
 
 	if blackboard == null:
-		blackboard = _create_local_blackboard()
+		BehaviourToolkit.Logger.say("Creating new blackboard", self)
+		blackboard = Blackboard.new()
 
 	if autostart:
 		start.call_deferred()
@@ -87,7 +62,7 @@ func start() -> void:
 	if verbose: BehaviourToolkit.Logger.say("Starting FiniteStateMachine...", self)
 
 	current_bt_status = BTBehaviour.BTStatus.RUNNING
-	
+
 	# Check if the initial state is valid
 	assert(initial_state != null, ERROR_INITIAL_STATE_NULL)
 
@@ -102,24 +77,16 @@ func start() -> void:
 
 	# Set the initial state
 	active_state = initial_state
-	active_state._on_enter(actor, blackboard)
+	active_state._on_enter(self, actor, blackboard)
 
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
 
 
-func  _physics_process(delta: float) -> void:
-	_process_code(delta)
-
-
-func _process(delta: float) -> void:
-	_process_code(delta)
-
-
 func _process_code(delta: float) -> void:
 	if not active:
 		return
-	
+
 	# Check if there are states
 	if states.size() == 0:
 		return
@@ -136,31 +103,31 @@ func _process_code(delta: float) -> void:
 
 	# Check if the current state is valid
 	var transition = active_state._has_valid_transitions(actor, blackboard, event)
-	
+
 	if transition is FSMTransition:
 		# Process the transition
 		transition._on_transition(delta, actor, blackboard)
-		
+
 		# Change the current state
 		change_state(transition.next_state)
 
-	if active_state is FSMCompoundState:
-		active_state._process_code(delta, actor, blackboard)
-	
+	#if active_state is FSMCompoundState:
+		#active_state._process_code(delta, actor, blackboard)
+
 	# Process the current state
-	active_state._on_update(delta, actor, blackboard)
+	active_state._on_update(delta, self, actor, blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.
 func change_state(state: FSMState) -> void:
 	# Exit the current state
-	active_state._on_exit(actor, blackboard)
+	active_state._on_exit(self, actor, blackboard)
 
 	# Change the current state
 	active_state = state
 
 	# Enter the new state
-	active_state._on_enter(actor, blackboard)
+	active_state._on_enter(self, actor, blackboard)
 
 	if verbose: BehaviourToolkit.Logger.say("Changed state to " + active_state.get_name(), self)
 
@@ -171,22 +138,11 @@ func change_state(state: FSMState) -> void:
 ## Fires an event in the FSM.
 func fire_event(event: String) -> void:
 	current_events.append(event)
-	
+
 	if active_state is FSMCompoundState:
 		active_state.fire_event(event)
 
 	if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
-
-
-func _create_local_blackboard() -> Blackboard:
-	var blackboard: Blackboard = Blackboard.new()
-	return blackboard
-
-
-# Configures process type to use, if FSM is not active both are disabled.
-func _setup_processing() -> void:
-	set_physics_process(process_type == ProcessType.PHYSICS)
-	set_process(process_type == ProcessType.IDLE)
 
 
 func _on_state_changed(state: FSMState) -> void:
@@ -198,7 +154,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 	if not initial_state:
 		warnings.append("Initial state is not set.")
-	
+
 	var children: Array = get_children()
 
 	if children.size() == 0:

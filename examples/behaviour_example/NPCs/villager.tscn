@@ -240,10 +240,9 @@ script = ExtResource("9_fbuja")
 script = ExtResource("7_ff4kr")
 wait_for_ticks = 500
 
-[node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector" node_paths=PackedStringArray("state_machine")]
+[node name="FireEventFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive/RevivalBehaviour/BTSelector"]
 script = ExtResource("18_45wr7")
 event = &"failed_revive"
-state_machine = NodePath("../../../..")
 
 [node name="onRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
 script = ExtResource("15_ahoqg")
@@ -323,11 +322,11 @@ wait_for_ticks = 150
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("8_5ft4q")
-autostart = true
-process_type = 0
 initial_state = NodePath("Idle")
+autostart = true
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
+process_type = 0
 
 [node name="Walking" type="Node" parent="AnimationStateMachine"]
 script = ExtResource("11_rb27u")
