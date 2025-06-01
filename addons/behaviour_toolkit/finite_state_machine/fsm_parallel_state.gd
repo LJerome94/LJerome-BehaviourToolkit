@@ -17,6 +17,6 @@ func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 
 
 ## Executes every process call, if the state is active.
-func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, _fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	for state in states:
-		state._on_update(_delta, _actor, _blackboard)
+		state._on_update(_delta, _fsm, _actor, _blackboard)
