@@ -15,7 +15,7 @@ gradient = SubResource("Gradient_1wfw0")
 script/source = "extends FSMState
 
 
-func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
+func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 	$\"../../../../Sprite2D\".modulate = Color.RED
 "
 
@@ -33,10 +33,10 @@ func is_valid(_actor: Node, _blackboard: Blackboard) -> bool:
 script/source = "extends FSMState
 
 
-func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
+func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
 	$\"../../../../Sprite2D\".modulate = Color.GREEN
 
-func _on_update(delta, _fsm: FiniteStateMachine, actor: Node, blackboard: Blackboard):
+func _on_update(delta, _fsm, actor, blackboard):
 	if Input.is_action_just_pressed(\"ui_left\"):
 		_fsm.fire_event(\"turn\")
 "
@@ -56,9 +56,8 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_shb12")
 
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("1_o1rk4")
-initial_state = NodePath("FSMParallelState")
 autostart = true
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
@@ -67,9 +66,8 @@ metadata/_custom_type_script = "uid://b0bqn8gtyevqu"
 script = ExtResource("2_1jefk")
 metadata/_custom_type_script = "uid://c1ex0cr8lpkkc"
 
-[node name="CompoundState Color" type="Node" parent="FiniteStateMachine/FSMParallelState" node_paths=PackedStringArray("initial_state")]
+[node name="CompoundState Color" type="Node" parent="FiniteStateMachine/FSMParallelState"]
 script = ExtResource("2_ckewi")
-initial_state = NodePath("Red")
 metadata/_custom_type_script = "uid://5n8qfp75073o"
 
 [node name="Red" type="Node" parent="FiniteStateMachine/FSMParallelState/CompoundState Color"]

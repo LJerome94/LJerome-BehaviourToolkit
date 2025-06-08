@@ -198,18 +198,16 @@ script = ExtResource("8_rjqba")
 [node name="BehaveLikeAGhost" type="Node" parent="Behaviour/Select/BeAGhost"]
 script = ExtResource("7_eoyf0")
 
-[node name="FiniteStateMachine" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost" node_paths=PackedStringArray("initial_state", "actor")]
+[node name="FiniteStateMachine" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost" node_paths=PackedStringArray("actor")]
 script = ExtResource("8_5ft4q")
-initial_state = NodePath("TransformIntoGhost")
 actor = NodePath("../../../../..")
 blackboard = ExtResource("4_opmou")
 
 [node name="TransformIntoGhost" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine"]
 script = ExtResource("13_har5q")
 
-[node name="onFinishedTransformation" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TransformIntoGhost" node_paths=PackedStringArray("next_state")]
+[node name="onFinishedTransformation" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TransformIntoGhost"]
 script = ExtResource("17_nswga")
-next_state = NodePath("../../TryToRevive")
 use_event = true
 event = "fully_transformed"
 
@@ -250,9 +248,8 @@ next_state = NodePath("../../Revive")
 use_event = true
 event = "revive"
 
-[node name="onFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive" node_paths=PackedStringArray("next_state")]
+[node name="onFailedRevive" type="Node" parent="Behaviour/Select/BeAGhost/BehaveLikeAGhost/FiniteStateMachine/TryToRevive"]
 script = ExtResource("17_nswga")
-next_state = NodePath("../../DoGhostThings")
 use_event = true
 event = "failed_revive"
 
@@ -320,9 +317,8 @@ script = ExtResource("7_ff4kr")
 script = ExtResource("7_ff4kr")
 wait_for_ticks = 150
 
-[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "actor")]
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("8_5ft4q")
-initial_state = NodePath("Idle")
 autostart = true
 actor = NodePath("..")
 blackboard = ExtResource("4_opmou")
@@ -336,9 +332,8 @@ script = ExtResource("12_a13jv")
 next_state = NodePath("../../Idle")
 event = "stop_walking"
 
-[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Walking" node_paths=PackedStringArray("next_state")]
+[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Walking"]
 script = ExtResource("17_nswga")
-next_state = NodePath("../../Refreshing")
 use_event = true
 event = "start_refreshing"
 
@@ -366,9 +361,8 @@ next_state = NodePath("../../Walking")
 use_event = true
 event = "start_walking"
 
-[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Idle" node_paths=PackedStringArray("next_state")]
+[node name="onStartRefreshing" type="Node" parent="AnimationStateMachine/Idle"]
 script = ExtResource("17_nswga")
-next_state = NodePath("../../Refreshing")
 use_event = true
 event = "start_refreshing"
 

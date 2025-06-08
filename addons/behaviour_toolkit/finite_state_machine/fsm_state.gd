@@ -53,7 +53,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: Array = []
 
 	var parent: Node = get_parent()
-	if not parent is FiniteStateMachine:
-		warnings.append("FSMState should be a child of a FiniteStateMachine node.")
+	var parent_is_par_state = parent is FSMParallelState
+	var parent_is_FSM = parent is FiniteStateMachine
+	var parent_is_comp_state = parent is FSMCompoundState
+	
+	if not (parent_is_FSM or parent_is_par_state or parent_is_comp_state):
+		warnings.append("FSMState should be a child of a FiniteStateMachine node, FSMParallelState node or FSMCompoundState node.")
 
 	return warnings
