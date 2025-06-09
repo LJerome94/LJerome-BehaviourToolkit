@@ -53,7 +53,7 @@ class Logger:
 	## Main color for logger messages.
 	const COLOR_MAIN: String = "Orange"
 	## Accent color for logger messages.
-	const COLOR_ACCENT: String = "Blue"
+	const COLOR_ACCENT: String = "Cyan"
 	## Warning color for logger messages.
 	const COLOR_WARNING: String = "Yellow"
 	## Error color for logger messages.

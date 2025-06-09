@@ -16,6 +16,12 @@ func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) 
 	#if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
 
 
+func fire_event(event: StringName) -> void:
+	for state in get_children():
+		if state.has_method("fire_event"):
+			state.fire_event(event)
+
+
 ## Executes every process call, if the state is active.
 func _on_update(_delta: float, _fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	for state in states:
