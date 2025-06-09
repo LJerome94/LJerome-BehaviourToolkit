@@ -139,7 +139,7 @@ func change_state(state: FSMState) -> void:
 func fire_event(event: String) -> void:
 	current_events.append(event)
 
-	if active_state is FSMCompoundState:
+	if active_state.has_method("fire_event"):
 		active_state.fire_event(event)
 
 	if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
