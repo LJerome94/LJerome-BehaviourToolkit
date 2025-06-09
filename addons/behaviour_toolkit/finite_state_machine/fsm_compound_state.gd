@@ -81,10 +81,10 @@ func change_state(state: FSMState, _fsm: FiniteStateMachine, _actor: Node, _blac
 
 
 ## Fires an event in the compound state.
-func fire_event(_event: StringName):
+func fire_event(_event: StringName) -> void:
 	current_events.append(_event)
 	
-	if active_state is FSMCompoundState:
+	if active_state.has_method("fire_event"):
 		active_state.fire_event(_event)
 
 	#if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
