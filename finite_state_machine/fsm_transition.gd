@@ -1,6 +1,6 @@
 @tool
 @icon("res://addons/behaviour_toolkit/icons/FSMTransition.svg")
-class_name FSMTransition extends BehaviourToolkit
+class_name FSMTransition extends Node
 ## A transition between two [FSMState]s in a [FiniteStateMachine].
 ##
 ## This is the base class for all transitions. To implement your logic you can

@@ -40,6 +40,8 @@ func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) 
 
 
 func _on_update(_delta: float, _fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
+	
+	active_state._on_update(_delta, _fsm, _actor, _blackboard)
 	# The current event
 	var event: StringName = ""
 
@@ -60,7 +62,6 @@ func _on_update(_delta: float, _fsm: FiniteStateMachine, _actor: Node, _blackboa
 		# Change the current state
 		change_state(transition.next_state, _fsm, _actor, _blackboard)
 	
-	active_state._on_update(_delta, _fsm, _actor, _blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.
