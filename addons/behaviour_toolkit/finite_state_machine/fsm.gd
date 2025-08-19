@@ -91,6 +91,9 @@ func _process_code(delta: float) -> void:
 	if states.size() == 0:
 		return
 
+	# Process the current state
+	active_state._on_update(delta, self, actor, blackboard)
+
 	# The current event
 	var event: StringName = ""
 
@@ -111,11 +114,6 @@ func _process_code(delta: float) -> void:
 		# Change the current state
 		change_state(transition.next_state)
 
-	#if active_state is FSMCompoundState:
-		#active_state._process_code(delta, actor, blackboard)
-
-	# Process the current state
-	active_state._on_update(delta, self, actor, blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.
