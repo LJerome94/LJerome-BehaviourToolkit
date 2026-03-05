@@ -49,7 +49,7 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 		CallTarget.BLACKBOARD:
 			target = blackboard
 		CallTarget.BLACKBOARD_KEY:
-			target = blackboard[blackboard_key_target]
+			target = blackboard.get_value(blackboard_key_target)
 		CallTarget.CUSTOM:
 			target = custom_target
 	
