@@ -11,6 +11,7 @@ class_name LeafCall extends BTLeaf
 enum CallTarget {
 	ACTOR,          ## The actor node set on the BTRoot node.
 	BLACKBOARD,     ## The blackboard node set on the BTRoot node.
+	BLACKBOARD_KEY, ## A node refernced in a blackboard.
 	CUSTOM,         ## A custom node set on the custom_target variable.
 }
 
@@ -35,6 +36,9 @@ enum CallTarget {
 		custom_target = value
 		update_configuration_warnings()
 
+## TODO Docstring
+@export var blackboard_key_target: StringName
+
 
 func tick(delta: float, actor: Node, blackboard: Blackboard):
 	var target
@@ -44,6 +48,8 @@ func tick(delta: float, actor: Node, blackboard: Blackboard):
 			target = actor
 		CallTarget.BLACKBOARD:
 			target = blackboard
+		CallTarget.BLACKBOARD_KEY:
+			target = blackboard[blackboard_key_target]
 		CallTarget.CUSTOM:
 			target = custom_target
 	

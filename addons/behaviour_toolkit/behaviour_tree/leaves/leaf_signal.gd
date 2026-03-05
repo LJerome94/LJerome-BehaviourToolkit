@@ -13,6 +13,7 @@ class_name LeafSignal extends BTLeaf
 enum EmitTarget {
 	ACTOR, ## The actor node set on the BTRoot node.
 	CUSTOM, ## A custom node set on the custom_target variable.
+	BLACKBOARD_KEY, ## Custom node that is referenced in a blackboard.
 	SELF, ## Don't emit signals from any target.
 }
 
@@ -43,7 +44,8 @@ signal leaf_emitted(arguments_array: Array)
 	set(value):
 		custom_target = value
 		update_configuration_warnings()
-
+## TODO Docstring
+@export var blacboard_key_target: StringName 
 
 
 
@@ -55,6 +57,8 @@ func tick(_delta: float, _actor: Node, _blackboard: Blackboard) -> BTStatus:
 			target = _actor
 		EmitTarget.CUSTOM:
 			target = custom_target
+		EmitTarget.BLACKBOARD_KEY:
+			target = _blackboard.get_value(blacboard_key_target)
 		EmitTarget.SELF:
 			emit_signal("leaf_emitted", arguments)
 			return BTStatus.SUCCESS

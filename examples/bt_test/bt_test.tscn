@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ejik5ciwjn63"]
+
+[ext_resource type="Script" uid="uid://d11c6gwrjou0w" path="res://addons/behaviour_toolkit/behaviour_tree/bt_root.gd" id="1_evpt0"]
+[ext_resource type="Script" uid="uid://bhahgsy1nt5yj" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_call.gd" id="3_4igwb"]
+[ext_resource type="Script" uid="uid://hrqpi0abma58" path="res://addons/behaviour_toolkit/behaviour_tree/leaves/leaf_print.gd" id="4_mepaa"]
+
+[node name="BtTest" type="Node2D"]
+
+[node name="BTRoot" type="Node" parent="."]
+script = ExtResource("1_evpt0")
+metadata/_custom_type_script = "uid://d11c6gwrjou0w"
+
+[node name="LeafCall" type="Node" parent="BTRoot"]
+script = ExtResource("3_4igwb")
+blackboard_key_target = null
+
+[node name="LeafPrint" type="Node" parent="BTRoot"]
+script = ExtResource("4_mepaa")
