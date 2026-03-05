@@ -12,7 +12,6 @@ metadata/_custom_type_script = "uid://d11c6gwrjou0w"
 
 [node name="LeafCall" type="Node" parent="BTRoot"]
 script = ExtResource("3_4igwb")
-blackboard_key_target = null
 
 [node name="LeafPrint" type="Node" parent="BTRoot"]
 script = ExtResource("4_mepaa")
