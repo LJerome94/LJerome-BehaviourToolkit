@@ -13,7 +13,7 @@ func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) 
 		if state is FSMState:
 			states.append(state)# DANGER Ceci est dangereux pour des doubles calls
 			state._on_enter(_fsm, _actor, _blackboard)
-	#if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
+	#if verbose: BehaviourToolkit.BTLogger.say("Setting up " + str(states.size()) + " states.", self)
 
 
 func fire_event(event: StringName) -> void:
