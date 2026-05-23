@@ -27,7 +27,7 @@ func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) 
 		if state is FSMState:
 			states.append(state) # DANGER Ceci est dangereux pour des doubles calls
 
-	#if verbose: BehaviourToolkit.Logger.say("Setting up " + str(states.size()) + " states.", self)
+	#if verbose: BehaviourToolkit.BTLogger.say("Setting up " + str(states.size()) + " states.", self)
 
 	#active = true
 
@@ -75,7 +75,7 @@ func change_state(state: FSMState, _fsm: FiniteStateMachine, _actor: Node, _blac
 	# Enter the new state
 	active_state._on_enter(_fsm, _actor, _blackboard)
 
-	#if verbose: BehaviourToolkit.Logger.say("Changed state to " + active_state.get_name(), self)
+	#if verbose: BehaviourToolkit.BTLogger.say("Changed state to " + active_state.get_name(), self)
 
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
@@ -88,7 +88,7 @@ func fire_event(_event: StringName) -> void:
 	if active_state.has_method("fire_event"):
 		active_state.fire_event(_event)
 
-	#if verbose: BehaviourToolkit.Logger.say("Fired event: " + event, self)
+	#if verbose: BehaviourToolkit.BTLogger.say("Fired event: " + event, self)
 
 
 func _get_configuration_warnings() -> PackedStringArray:

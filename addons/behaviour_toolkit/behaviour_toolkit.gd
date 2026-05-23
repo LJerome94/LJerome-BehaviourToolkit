@@ -25,7 +25,7 @@ var active: bool = false
 # Configures process type to use, if BTree is not active both are disabled.
 func _setup_processing() -> void:
 	if verbose:
-		BehaviourToolkit.Logger.say("Setting process type: " + str(ProcessType.keys()[process_type]), self)
+		BehaviourToolkit.BTLogger.say("Setting process type: " + str(ProcessType.keys()[process_type]), self)
 	set_physics_process(process_type == ProcessType.PHYSICS)
 	set_process(process_type == ProcessType.IDLE)
 
@@ -42,21 +42,21 @@ func _process(delta: float) -> void:
 	_process_code(delta)
 
 
-class Logger:
+class BTLogger:
 	enum LogType {
 	DEFAULT,
 	WARNING,
 	ERROR,
 	}
-	## Logger class for Behaviour Toolkit plugin.
+	## BTLogger class for Behaviour Toolkit plugin.
 
-	## Main color for logger messages.
+	## Main color for BTLogger messages.
 	const COLOR_MAIN: String = "Orange"
-	## Accent color for logger messages.
+	## Accent color for BTLogger messages.
 	const COLOR_ACCENT: String = "Cyan"
-	## Warning color for logger messages.
+	## Warning color for BTLogger messages.
 	const COLOR_WARNING: String = "Yellow"
-	## Error color for logger messages.
+	## Error color for BTLogger messages.
 	const COLOR_ERROR: String = "Red"
 
 	## Log a message to the console with the Behaviour Toolkit prefix.
