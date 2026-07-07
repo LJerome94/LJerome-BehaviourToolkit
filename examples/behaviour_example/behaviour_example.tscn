@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf6a7bpqsqo3a"]
+[gd_scene format=3 uid="uid://cf6a7bpqsqo3a"]
 
 [ext_resource type="Script" uid="uid://hr2laxeenvtx" path="res://examples/behaviour_example/Camera.gd" id="1_ukdj2"]
 [ext_resource type="Script" uid="uid://c51orvxej8uxv" path="res://examples/behaviour_example/behaviour_example.gd" id="1_xnxut"]
@@ -9,12 +9,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x33wf"]
 radius = 30.0
 
-[node name="BehaviourExample" type="Node2D"]
+[node name="BehaviourExample" type="Node2D" unique_id=277554676]
 texture_filter = 3
 script = ExtResource("1_xnxut")
 global_blackboard = ExtResource("2_lmhgv")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." unique_id=2079878398]
 tile_set = ExtResource("3_gy77p")
 format = 2
 layer_0/name = "Ground"
@@ -22,211 +22,211 @@ layer_0/tile_data = PackedInt32Array(131072, 0, 0, 458752, 0, 0, 1310721, 0, 0, 
 layer_1/name = "Objects"
 layer_1/tile_data = PackedInt32Array(1900563, 524288, 8, 1835027, 524288, 7)
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." unique_id=785957982]
 position = Vector2(439, 309)
 zoom = Vector2(1.1, 1.1)
 editor_draw_limits = true
 script = ExtResource("1_ukdj2")
 
-[node name="Actors" type="Node2D" parent="."]
+[node name="Actors" type="Node2D" parent="." unique_id=745930930]
 y_sort_enabled = true
 
-[node name="Villager1" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager1" parent="Actors" unique_id=1748773012 instance=ExtResource("5_1u0ob")]
 position = Vector2(119, 72)
 
-[node name="Villager2" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager2" parent="Actors" unique_id=574035855 instance=ExtResource("5_1u0ob")]
 position = Vector2(395, 273)
 
-[node name="Villager3" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager3" parent="Actors" unique_id=1081746017 instance=ExtResource("5_1u0ob")]
 position = Vector2(139, 523)
 
-[node name="Villager4" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager4" parent="Actors" unique_id=628588833 instance=ExtResource("5_1u0ob")]
 position = Vector2(746, 82)
 
-[node name="Villager5" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager5" parent="Actors" unique_id=1143625394 instance=ExtResource("5_1u0ob")]
 position = Vector2(700, 431)
 
-[node name="Villager6" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager6" parent="Actors" unique_id=745559342 instance=ExtResource("5_1u0ob")]
 position = Vector2(146, 338)
 
-[node name="Villager7" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager7" parent="Actors" unique_id=1583776002 instance=ExtResource("5_1u0ob")]
 position = Vector2(774, 505)
 
-[node name="Villager8" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager8" parent="Actors" unique_id=627748487 instance=ExtResource("5_1u0ob")]
 position = Vector2(726, 287)
 
-[node name="Villager9" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager9" parent="Actors" unique_id=587839450 instance=ExtResource("5_1u0ob")]
 position = Vector2(504, 320)
 
-[node name="Villager10" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager10" parent="Actors" unique_id=1548777937 instance=ExtResource("5_1u0ob")]
 position = Vector2(437, 384)
 
-[node name="Villager11" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager11" parent="Actors" unique_id=974819923 instance=ExtResource("5_1u0ob")]
 position = Vector2(455, 73)
 
-[node name="Villager12" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager12" parent="Actors" unique_id=326393226 instance=ExtResource("5_1u0ob")]
 position = Vector2(55, 101)
 
-[node name="Villager13" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager13" parent="Actors" unique_id=345270413 instance=ExtResource("5_1u0ob")]
 position = Vector2(182, 557)
 
-[node name="Villager14" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager14" parent="Actors" unique_id=1770765813 instance=ExtResource("5_1u0ob")]
 position = Vector2(729, 171)
 
-[node name="Villager15" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager15" parent="Actors" unique_id=158863195 instance=ExtResource("5_1u0ob")]
 position = Vector2(583, 547)
 
-[node name="Villager16" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager16" parent="Actors" unique_id=2133418787 instance=ExtResource("5_1u0ob")]
 position = Vector2(658, 306)
 
-[node name="Villager17" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager17" parent="Actors" unique_id=80260577 instance=ExtResource("5_1u0ob")]
 position = Vector2(832, 571)
 
-[node name="Villager18" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager18" parent="Actors" unique_id=772717710 instance=ExtResource("5_1u0ob")]
 position = Vector2(799, 372)
 
-[node name="Villager19" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager19" parent="Actors" unique_id=1706901621 instance=ExtResource("5_1u0ob")]
 position = Vector2(99, 304)
 
-[node name="Villager20" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager20" parent="Actors" unique_id=2042404854 instance=ExtResource("5_1u0ob")]
 position = Vector2(817, 440)
 
-[node name="Villager21" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager21" parent="Actors" unique_id=1043483891 instance=ExtResource("5_1u0ob")]
 position = Vector2(386, 342)
 
-[node name="Villager22" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager22" parent="Actors" unique_id=1006801620 instance=ExtResource("5_1u0ob")]
 position = Vector2(105, 246)
 
-[node name="Villager23" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager23" parent="Actors" unique_id=1193905369 instance=ExtResource("5_1u0ob")]
 position = Vector2(567, 82)
 
-[node name="Villager24" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager24" parent="Actors" unique_id=732245313 instance=ExtResource("5_1u0ob")]
 position = Vector2(708, 547)
 
-[node name="Villager25" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager25" parent="Actors" unique_id=1755955655 instance=ExtResource("5_1u0ob")]
 position = Vector2(268, 539)
 
-[node name="Villager26" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager26" parent="Actors" unique_id=1803588436 instance=ExtResource("5_1u0ob")]
 position = Vector2(452, 551)
 
-[node name="Villager27" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager27" parent="Actors" unique_id=757652286 instance=ExtResource("5_1u0ob")]
 position = Vector2(404, 86)
 
-[node name="Villager28" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager28" parent="Actors" unique_id=115162836 instance=ExtResource("5_1u0ob")]
 position = Vector2(105, 418)
 
-[node name="Villager29" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager29" parent="Actors" unique_id=134794286 instance=ExtResource("5_1u0ob")]
 position = Vector2(732, 232)
 
-[node name="Villager30" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager30" parent="Actors" unique_id=94758095 instance=ExtResource("5_1u0ob")]
 position = Vector2(645, 84)
 
-[node name="Villager31" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager31" parent="Actors" unique_id=1498882093 instance=ExtResource("5_1u0ob")]
 position = Vector2(424, 211)
 
-[node name="Villager32" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager32" parent="Actors" unique_id=401580995 instance=ExtResource("5_1u0ob")]
 position = Vector2(603, 406)
 
-[node name="Villager33" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager33" parent="Actors" unique_id=1204918705 instance=ExtResource("5_1u0ob")]
 position = Vector2(457, 282)
 
-[node name="Villager34" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager34" parent="Actors" unique_id=388082514 instance=ExtResource("5_1u0ob")]
 position = Vector2(106, 195)
 
-[node name="Villager35" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager35" parent="Actors" unique_id=525514609 instance=ExtResource("5_1u0ob")]
 position = Vector2(155, 112)
 
-[node name="Villager36" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager36" parent="Actors" unique_id=1776336845 instance=ExtResource("5_1u0ob")]
 position = Vector2(99, 555)
 
-[node name="Villager37" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager37" parent="Actors" unique_id=1444281811 instance=ExtResource("5_1u0ob")]
 position = Vector2(294, 84)
 
-[node name="Villager38" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager38" parent="Actors" unique_id=912478119 instance=ExtResource("5_1u0ob")]
 position = Vector2(359, 549)
 
-[node name="Villager39" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager39" parent="Actors" unique_id=1855582370 instance=ExtResource("5_1u0ob")]
 position = Vector2(471, 503)
 
-[node name="Villager40" parent="Actors" instance=ExtResource("5_1u0ob")]
+[node name="Villager40" parent="Actors" unique_id=1609572865 instance=ExtResource("5_1u0ob")]
 position = Vector2(439, 175)
 
-[node name="Locations" type="Node2D" parent="."]
+[node name="Locations" type="Node2D" parent="." unique_id=985696596]
 
-[node name="Position1" type="Marker2D" parent="Locations"]
+[node name="Position1" type="Marker2D" parent="Locations" unique_id=561764551]
 position = Vector2(42, 53)
 
-[node name="Position2" type="Marker2D" parent="Locations"]
+[node name="Position2" type="Marker2D" parent="Locations" unique_id=372233303]
 position = Vector2(40, 121)
 
-[node name="Position3" type="Marker2D" parent="Locations"]
+[node name="Position3" type="Marker2D" parent="Locations" unique_id=1406917527]
 position = Vector2(158, 123)
 
-[node name="Position4" type="Marker2D" parent="Locations"]
+[node name="Position4" type="Marker2D" parent="Locations" unique_id=1473285315]
 position = Vector2(100, 92)
 
-[node name="Position5" type="Marker2D" parent="Locations"]
+[node name="Position5" type="Marker2D" parent="Locations" unique_id=600049407]
 position = Vector2(168, 68)
 
-[node name="Position6" type="Marker2D" parent="Locations"]
+[node name="Position6" type="Marker2D" parent="Locations" unique_id=1217916877]
 position = Vector2(404, 287)
 
-[node name="Position7" type="Marker2D" parent="Locations"]
+[node name="Position7" type="Marker2D" parent="Locations" unique_id=38988128]
 position = Vector2(449, 351)
 
-[node name="Position8" type="Marker2D" parent="Locations"]
+[node name="Position8" type="Marker2D" parent="Locations" unique_id=2050995632]
 position = Vector2(512, 287)
 
-[node name="Position9" type="Marker2D" parent="Locations"]
+[node name="Position9" type="Marker2D" parent="Locations" unique_id=525205814]
 position = Vector2(156, 508)
 
-[node name="Position10" type="Marker2D" parent="Locations"]
+[node name="Position10" type="Marker2D" parent="Locations" unique_id=486211022]
 position = Vector2(157, 574)
 
-[node name="Position11" type="Marker2D" parent="Locations"]
+[node name="Position11" type="Marker2D" parent="Locations" unique_id=2066488692]
 position = Vector2(102, 554)
 
-[node name="Position12" type="Marker2D" parent="Locations"]
+[node name="Position12" type="Marker2D" parent="Locations" unique_id=1304737410]
 position = Vector2(704, 423)
 
-[node name="Position13" type="Marker2D" parent="Locations"]
+[node name="Position13" type="Marker2D" parent="Locations" unique_id=232520284]
 position = Vector2(691, 461)
 
-[node name="Position14" type="Marker2D" parent="Locations"]
+[node name="Position14" type="Marker2D" parent="Locations" unique_id=1949561236]
 position = Vector2(441, 520)
 
-[node name="Position15" type="Marker2D" parent="Locations"]
+[node name="Position15" type="Marker2D" parent="Locations" unique_id=242401507]
 position = Vector2(772, 574)
 
-[node name="Position16" type="Marker2D" parent="Locations"]
+[node name="Position16" type="Marker2D" parent="Locations" unique_id=1567203764]
 position = Vector2(828, 518)
 
-[node name="Position17" type="Marker2D" parent="Locations"]
+[node name="Position17" type="Marker2D" parent="Locations" unique_id=1489003609]
 position = Vector2(817, 286)
 
-[node name="Position18" type="Marker2D" parent="Locations"]
+[node name="Position18" type="Marker2D" parent="Locations" unique_id=2061318761]
 position = Vector2(809, 147)
 
-[node name="Position19" type="Marker2D" parent="Locations"]
+[node name="Position19" type="Marker2D" parent="Locations" unique_id=586890195]
 position = Vector2(760, 166)
 
-[node name="Position20" type="Marker2D" parent="Locations"]
+[node name="Position20" type="Marker2D" parent="Locations" unique_id=646524425]
 position = Vector2(696, 205)
 
-[node name="Position21" type="Marker2D" parent="Locations"]
+[node name="Position21" type="Marker2D" parent="Locations" unique_id=1621759892]
 position = Vector2(698, 152)
 
-[node name="Position22" type="Marker2D" parent="Locations"]
+[node name="Position22" type="Marker2D" parent="Locations" unique_id=909940891]
 position = Vector2(788, 192)
 
-[node name="Position23" type="Marker2D" parent="Locations"]
+[node name="Position23" type="Marker2D" parent="Locations" unique_id=1093636180]
 position = Vector2(145, 359)
 
-[node name="WellArea" type="Area2D" parent="."]
+[node name="WellArea" type="Area2D" parent="." unique_id=1932001433]
 position = Vector2(312, 473)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WellArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WellArea" unique_id=1348253154]
 shape = SubResource("CircleShape2D_x33wf")
 
 [connection signal="body_entered" from="WellArea" to="." method="_on_well_area_body_entered"]
