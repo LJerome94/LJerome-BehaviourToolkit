@@ -24,8 +24,8 @@ signal state_changed(state: FSMState)
 func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	# Get all the states
 	for state in get_children():
-		if state is FSMState:
-			states.append(state) # DANGER Ceci est dangereux pour des doubles calls
+		if (state is FSMState) and (not state in states):
+			states.append(state)
 
 	#if verbose: BehaviourToolkit.BTLogger.say("Setting up " + str(states.size()) + " states.", self)
 

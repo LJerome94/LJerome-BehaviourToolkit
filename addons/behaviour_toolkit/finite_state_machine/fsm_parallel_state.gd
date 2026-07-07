@@ -10,7 +10,7 @@ var states: Array[FSMState]
 func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	# Get all the states
 	for state in get_children():
-		if state is FSMState:
+		if (state is FSMState) and (not state in states):
 			states.append(state)# DANGER Ceci est dangereux pour des doubles calls
 			state._on_enter(_fsm, _actor, _blackboard)
 	#if verbose: BehaviourToolkit.BTLogger.say("Setting up " + str(states.size()) + " states.", self)
