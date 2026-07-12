@@ -39,6 +39,11 @@ func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) 
 	emit_signal("state_changed", active_state)
 
 
+## Executes before the state is exited.
+func _on_exit(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
+	active_state._on_exit(_fsm, _actor, _blackboard)
+
+
 func _on_update(_delta: float, _fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
 	
 	active_state._on_update(_delta, _fsm, _actor, _blackboard)

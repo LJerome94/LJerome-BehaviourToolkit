@@ -11,9 +11,15 @@ func _on_enter(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) 
 	# Get all the states
 	for state in get_children():
 		if (state is FSMState) and (not state in states):
-			states.append(state)# DANGER Ceci est dangereux pour des doubles calls
+			states.append(state)
 			state._on_enter(_fsm, _actor, _blackboard)
 	#if verbose: BehaviourToolkit.BTLogger.say("Setting up " + str(states.size()) + " states.", self)
+
+
+## Executes before the state is exited.
+func _on_exit(_fsm: FiniteStateMachine, _actor: Node, _blackboard: Blackboard) -> void:
+	for state in states:
+		state._on_exit(_fsm, _actor, _blackboard)
 
 
 func fire_event(event: StringName) -> void:
